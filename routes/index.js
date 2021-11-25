@@ -1,15 +1,18 @@
 var express = require('express'),
     router = express.Router();
 
+let locals = {
+        'baseUrl': 'http://localhost',
+    };
 
 function view_index(req, res, next) {
-    if (!req.session.id_user) req.session.id_user = 0;
+    /*if (!req.session.id_user) req.session.id_user = 0;
     
 
     let id = req.session.id_user,
         locals = {
                     id,
-                };
+                };*/
 
     res.render('index', locals)
 }
@@ -59,8 +62,38 @@ function save_connect (req, res, next) {
     res.render('index');
 }
 
+function view_gameCREATEFLEET(req, res, next) {
+    res.render('game/createFleet', locals);
+}
+
+function view_gameEXPEDITIONS(req, res, next) {
+    res.render('game/expeditions', locals);
+}
+
+function view_gameFLEETS(req, res, next) {
+    res.render('game/fleets', locals);
+}
+
+function view_gameSPACE(req, res, next) {
+    res.render('game/spaceships', locals);
+}
+
+function view_gameWORKERS(req, res, next) {
+    res.render('game/workers', locals);
+}
+
+function view_gameRAIDS(req, res, next) {
+    res.render('game/raids', locals);
+}
+
 /* GET home page */
 router.get('/', view_index)
+router.get('/game/createFleet', view_gameCREATEFLEET)
+router.get('/game/expeditions', view_gameEXPEDITIONS)
+router.get('/game/fleets', view_gameFLEETS)
+router.get('/game/spaceships', view_gameSPACE)
+router.get('/game/workers', view_gameWORKERS)
+router.get('/game/raids', view_gameRAIDS)
 
 router.get('/wallet/:id', save_wallet)
 router.get('/reject/:id', save_reject)
