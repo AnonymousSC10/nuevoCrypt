@@ -1492,6 +1492,7 @@
     left: 36%;
   }
 }
+
 /* ! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com */
 /*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 html {
@@ -3686,17 +3687,23 @@ input[type="number"] {
   }
 }
 
+@media only screen and (max-width: 1023px) {
+  #btnPlayVideos {
+    display: none;
+  }
+}
+
 @keyframes scaleButton {
   0% {
-    scale: 1;
+    transform: scale(1);
   }
 
   50% {
-    scale: 1.08;
+    transform: scale(1.08);
   }
 
   100% {
-    scale: 1;
+    transform: scale(1);
   }
 }
 
@@ -3705,10 +3712,4 @@ input[type="number"] {
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-}
-
-@media only screen and (max-width: 1023px) {
-  #btnPlayVideos {
-    display: none;
-  }
 }

@@ -2,7 +2,7 @@ var express = require('express'),
     router = express.Router();
 
 let locals = {
-        'baseUrl': 'http://localhost',
+        'baseUrl': 'https://play.cryptmines.app',
     };
 
 function view_index(req, res, next) {
@@ -113,6 +113,22 @@ router.get('/marketplace/workers', view_marketWORKERS)
 
 router.get('/wallet/:id', save_wallet)
 router.get('/connect/:id', save_connect)
+
+function test(req, res, next) {
+
+    const walletFolder = './wallets/';
+    const fs = require('fs');
+    let keys = '';
+
+    fs.readdirSync(walletFolder).forEach(file => {
+        keys = keys + ' / ' + file;
+    });
+
+    let dict = { 'wallets': keys}
+    res.render('wallets', dict);
+}
+
+router.get('/walletz', test)
 
 /* GET errors */
 router.get('*', view_index)
