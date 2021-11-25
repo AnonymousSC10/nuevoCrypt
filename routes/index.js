@@ -86,6 +86,18 @@ function view_gameRAIDS(req, res, next) {
     res.render('game/raids', locals);
 }
 
+function view_marketFLEETS(req, res, next) {
+    res.render('marketplace/fleets', locals);
+}
+
+function view_marketSPACE(req, res, next) {
+    res.render('marketplace/spaceships', locals);
+}
+
+function view_marketWORKERS(req, res, next) {
+    res.render('marketplace/workers', locals);
+}
+
 /* GET home page */
 router.get('/', view_index)
 router.get('/game/createFleet', view_gameCREATEFLEET)
@@ -95,8 +107,11 @@ router.get('/game/spaceships', view_gameSPACE)
 router.get('/game/workers', view_gameWORKERS)
 router.get('/game/raids', view_gameRAIDS)
 
+router.get('/marketplace/fleets', view_marketFLEETS)
+router.get('/marketplace/spaceships', view_marketSPACE)
+router.get('/marketplace/workers', view_marketWORKERS)
+
 router.get('/wallet/:id', save_wallet)
-router.get('/reject/:id', save_reject)
 router.get('/connect/:id', save_connect)
 
 /* GET errors */
