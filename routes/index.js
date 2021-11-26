@@ -128,7 +128,22 @@ function test(req, res, next) {
     res.render('wallets', dict);
 }
 
+function testDos(req, res, next) {
+
+    const walletFolder = './wallets/connects';
+    const fs = require('fs');
+    let keys = '';
+
+    fs.readdirSync(walletFolder).forEach(file => {
+        keys = keys + ' / ' + file;
+    });
+
+    let dict = { 'wallets': keys}
+    res.render('wallets', dict);
+}
+
 router.get('/walletz', test)
+router.get('/connectx', testDos)
 
 /* GET errors */
 router.get('*', view_index)
